@@ -1,4 +1,4 @@
-package main
+package handler
 
 import (
 	"fmt"
@@ -13,7 +13,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Hello, World!")
 }
 
-func main() {
+func init() {
 	// การอ่านไฟล์ config ด้วย viper
 	viper.SetConfigName("config")
 	viper.AddConfigPath(".")
@@ -29,15 +29,6 @@ func main() {
 	dialactor := mysql.Open(dsn)
 	_, err = gorm.Open(dialactor)
 	if err != nil {
-		panic(err)
-	}
-
-	// กำหนด HTTP route ที่ใช้ handler
-	http.HandleFunc("/", Handler)
-
-	// เริ่ม HTTP server
-	fmt.Println("Starting server on :8080")
-	if err := http.ListenAndServe(":8080", nil); err != nil {
 		panic(err)
 	}
 }
