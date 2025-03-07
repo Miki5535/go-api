@@ -1,0 +1,4 @@
+
+# ต้อง แทบครั้งเดียว ตรง dsn
+mysql:
+  dsn : "landmark:landmark@csmsu@tcp(202.28.34.197:3306)/landmark?collation=utf8mb4_unicode_ci&parseTime=true"
